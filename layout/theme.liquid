@@ -6,10 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
 		{% include 'meta' %}
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<link href="{{ 'logo.png' | asset_url }}" rel="icon" type="image/png" />
-		<link href="{{ canonical_url }}" rel="canonical">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+		<!--[if lt IE 9]>
+		<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<link href="{{ 'favicon.png' | asset_url }}" rel="icon" type="image/png"/>
+		<link href="{{ canonical_url }}" rel="canonical"/>
 		{{ 'style.css' | asset_url | stylesheet_tag }}
 		{{ content_for_header }}
 	</head>
@@ -17,16 +21,12 @@
 		{% include 'customer' %}
 		{% include 'cart' %}
 		{% include 'search' %}
-		<a href="/">{{ shop.name }}</a>
+		<a href="{{ shop.url }}">{{ shop.name }}</a>
 		{% include 'main-menu' %}
 		{{ content_for_layout }}
 		{% include 'footer' %}
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<!--[if lt IE 9]>
-		<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		{{ 'script.js' | asset_url | script_tag }}
 	</body>
 </html>

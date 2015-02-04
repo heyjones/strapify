@@ -1,0 +1,21 @@
+<h1>{{ collection.title }}</h1>
+<p class="lead">{{ collection.description }}</p>
+{% paginate collection.products by 10 %}
+<div class="row">
+{% for product in collection.products %}
+	<div class="col-sm-3">
+		<a href="{{ product.url | within: collection }}">
+			<img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" class="img-responsive">
+			<h2>{{ product.title }}</h2>
+			{% if product.compare_at_price > product.price %}
+			<s>{{ product.compare_at_price | money }}</s>
+			{% endif %}
+			{{ product.price | money }}
+			{% unless product.available  %}
+			SOLD OUT
+			{% endunless %}
+		</a>
+	</div>
+{% endfor %}
+</div>
+{% endpaginate %}

@@ -1,0 +1,6 @@
+{% paginate blog.articles by 5 %}
+	{% include 'article' %}
+	{% if paginate.pages > 1 %}
+		{% include 'paginate' %}
+	{% endif %}
+{% endpaginate %}

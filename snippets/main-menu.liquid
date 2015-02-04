@@ -1,0 +1,13 @@
+<ul>
+	{% for link in linklists.main-menu.links %}
+		<li{% if link.active %} class="active"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+		{% assign children = link.title | handleize %}
+		{% if linklists[children].links != blank %}
+			<ul>
+			{% for child in linklists[children].links %}
+				<li{% if child.active %} class="active"{% endif %}><a href="{{ child.url }}">{{ child.title | escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% endfor %}
+</ul>
